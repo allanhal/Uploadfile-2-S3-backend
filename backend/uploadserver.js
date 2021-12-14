@@ -37,13 +37,11 @@ const s3 = new AWS.S3({
 app.post("/uploadfile", upload.single('file'), (req, res) => {
     console.log(req.file);
     if (req.file == null) {
-        console.log("inside the first if")
         return res.status(400).json({ 'message': 'Please choose the file' })
     }
 
         var file = req.file
         const uploadImage=(file)=>{
-            console.log("second if")  
             const fileStream = fs.createReadStream(file.path);
 
             const params = {
